@@ -15,8 +15,8 @@ from utils import initialize_llm, initialize_embeddings, setup_page
 llm = initialize_llm()
 embeddings = initialize_embeddings()
 setup_page(
-    "AI-Powered Web Scraper with FAISS Storage",
-    "Enter a website URL below and store its knowledge for AI-based Q&A!"
+    title="AI-Powered Web Scraper with FAISS Storage",
+    description="Enter a website URL below and store its knowledge for AI-based Q&A!"
 )
 
 # Initialize FAISS Vector Database

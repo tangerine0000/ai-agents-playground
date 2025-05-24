@@ -11,8 +11,8 @@ from utils import initialize_llm, setup_page
 # Initialize components
 llm = initialize_llm()
 setup_page(
-    "AI-Powered Web Scraper",
-    "Enter a website URL below and get a summarized version!"
+    title="AI-Powered Web Scraper",
+    description="Enter a website URL below and get a summarized version!"
 )
 
 def scrape_website(url: str) -> str:

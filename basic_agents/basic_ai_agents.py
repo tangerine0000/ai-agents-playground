@@ -11,8 +11,8 @@ from utils import initialize_llm, setup_page
 # Initialize components
 llm = initialize_llm()
 setup_page(
-    "AI Chatbot with Memory",
-    "Ask me anything! I'll remember our conversation."
+    title="AI Chatbot with Memory",
+    description="Ask me anything! I'll remember our conversation."
 )
 
 # Initialize chat history
