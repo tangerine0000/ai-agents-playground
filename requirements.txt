@@ -1,0 +1,9 @@
+streamlit==1.32.0
+requests==2.31.0
+beautifulsoup4==4.12.3
+faiss-cpu==1.7.4
+langchain-ollama==0.0.3
+langchain-huggingface==0.0.6
+sentence-transformers==2.5.1
+torch==2.2.1
+numpy==1.26.4 
