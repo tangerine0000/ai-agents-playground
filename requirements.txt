@@ -6,7 +6,6 @@ langchain==0.1.12
 langchain-core==0.1.28
 langchain-community==0.0.28
 langchain-text-splitters==0.0.2
-langchain-ollama==0.0.3
 sentence-transformers==2.2.2
 torch==2.0.1
 numpy==1.24.3

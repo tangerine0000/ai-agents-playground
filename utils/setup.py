@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from langchain_ollama import OllamaLLM
+from langchain_community.llms import Ollama
 from langchain_huggingface import HuggingFaceEmbeddings
 import torch
 
@@ -18,37 +18,33 @@ import warnings
 warnings.filterwarnings('ignore')
 
 def initialize_llm():
-    """Initialize the LLM model."""
+    """Initialize the LLM with Ollama."""
     try:
-        return OllamaLLM(model="gemma3:1b")
+        llm = Ollama(
+            base_url=os.getenv("OLLAMA_API_BASE", "http://localhost:11434"),
+            model="llama2"
+        )
+        return llm
     except Exception as e:
         st.error(f"Error initializing LLM: {str(e)}")
-        st.error("Please make sure Ollama is running and the model is installed")
-        st.stop()
+        return None
 
 def initialize_embeddings():
     """Initialize the embeddings model."""
     try:
-        return HuggingFaceEmbeddings(
-            model_name="all-MiniLM-L6-v2",
-            model_kwargs={'device': 'cpu'},
-            encode_kwargs={'normalize_embeddings': True}
+        embeddings = HuggingFaceEmbeddings(
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
+        return embeddings
     except Exception as e:
-        st.error(f"Error loading embeddings model: {str(e)}")
-        st.error("Please make sure you have installed the required packages: pip install sentence-transformers")
-        st.stop()
+        st.error(f"Error initializing embeddings: {str(e)}")
+        return None
 
-def setup_page(title, description):
-    """Setup the Streamlit page with title and description."""
-    try:
-        st.set_page_config(
-            page_title=title,
-            layout="wide",
-            initial_sidebar_state="collapsed"
-        )
-        st.title(title)
-        st.write(description)
-    except Exception as e:
-        st.error(f"Error setting up page: {str(e)}")
-        st.stop() 
+def setup_page():
+    """Setup the Streamlit page configuration."""
+    st.set_page_config(
+        page_title="AI Web Scraper",
+        page_icon="🤖",
+        layout="wide"
+    )
+    st.title("AI Web Scraper") 
