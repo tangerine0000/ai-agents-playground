@@ -1,54 +1,79 @@
-# AI Agents Collection
+# AI Agents Playground
 
-A collection of AI-powered applications built with Streamlit.
+A collection of AI-powered applications built with Streamlit, LangChain, and Ollama.
 
 ## Applications
 
-1. **Basic AI Chat** (`basic_agents/basic_ai_agents.py`)
-   - Chat interface with memory
-   - Remembers conversation history
-   - Simple Q&A functionality
+### 1. AI Chatbot with Memory
+A conversational AI chatbot that remembers the conversation history.
+- **Local Run**: `streamlit run basic_agents/basic_ai_agents.py`
+- **Deployment**: [AI Chatbot with Memory](https://tan-chatbot-agents.streamlit.app/)
 
-2. **Basic Web Scraper** (`web_scraper_agents/ai_web_scraper.py`)
-   - URL input
-   - Website content extraction
-   - AI-generated summary
+### 2. AI-Powered Web Scraper
+A web scraper that can extract and summarize content from any website.
+- **Local Run**: `streamlit run web_scraper_agents/ai_web_scraper.py`
+- **Deployment**: [AI Web Scraper](https://tan-summarizer-web-agents.streamlit.app/)
 
-3. **FAISS Web Scraper** (`web_scraper_agents/ai_web_scraper_faiss.py`)
-   - URL input
-   - Content storage in vector database
-   - Q&A based on stored content
-   - Semantic search capabilities
+### 3. AI Web Scraper with FAISS
+An advanced web scraper that stores content in a FAISS vector database for semantic search and Q&A.
+- **Local Run**: `streamlit run web_scraper_agents/ai_web_scraper_faiss.py`
+- **Deployment**: [AI Web Scraper with FAISS](https://tan-chatbot-web-scraper-agents.streamlit.app/)
 
-## Deployment Instructions
+## Features
 
-1. Fork this repository to your GitHub account
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Sign in with your GitHub account
-4. Click "New app"
-5. Select your forked repository
-6. For each app, create a new deployment with these settings:
-   - Main file path: `basic_agents/basic_ai_agents.py` (or the respective file)
-   - Python version: 3.10
-   - Requirements file: `requirements.txt`
+- **AI Chatbot**: Conversational AI with memory using LangChain and Ollama
+- **Web Scraping**: Content extraction and summarization
+- **Vector Storage**: FAISS-based semantic search and Q&A
+- **Streamlit UI**: User-friendly interface for all applications
 
-## Environment Variables
+## Requirements
 
-Set these environment variables in Streamlit Cloud:
-- `OLLAMA_API_BASE`: Your Ollama API endpoint
-- `TOKENIZERS_PARALLELISM`: "false"
-- `CUDA_VISIBLE_DEVICES`: ""
+- Python 3.10+
+- Streamlit
+- LangChain
+- Ollama
+- FAISS
+- BeautifulSoup4
+- Other dependencies listed in `requirements.txt`
 
 ## Local Development
 
-1. Install dependencies:
+1. Clone the repository:
+```bash
+git clone https://github.com/tangerine0000/ai-agents-playground.git
+cd ai-agents-playground
+```
+
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Run locally:
+3. Run any of the applications:
 ```bash
 streamlit run basic_agents/basic_ai_agents.py
+# or
 streamlit run web_scraper_agents/ai_web_scraper.py
+# or
 streamlit run web_scraper_agents/ai_web_scraper_faiss.py
-``` 
+```
+
+## Environment Variables
+
+Set these environment variables for local development:
+```
+OLLAMA_API_BASE = "http://localhost:11434"  # Change this to your Ollama endpoint
+TOKENIZERS_PARALLELISM = "false"
+CUDA_VISIBLE_DEVICES = ""
+```
+
+## Deployment
+
+The applications are deployed on Streamlit Cloud:
+1. [AI Chatbot with Memory](https://tan-chatbot-agents.streamlit.app/)
+2. [AI Web Scraper](https://tan-summarizer-web-agents.streamlit.app/)
+3. [AI Web Scraper with FAISS](https://tan-chatbot-web-scraper-agents.streamlit.app/)
+
+## License
+
+MIT License 
