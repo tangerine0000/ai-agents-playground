@@ -20,43 +20,10 @@ warnings.filterwarnings('ignore')
 def initialize_llm():
     """Initialize the LLM with Ollama."""
     try:
-        # Get Ollama API base URL from environment variable
-        ollama_base = os.getenv("OLLAMA_API_BASE")
-        if not ollama_base:
-            st.error("""
-            Error: OLLAMA_API_BASE environment variable is not set.
-            
-            For local development:
-            1. Make sure Ollama is running locally
-            2. Set OLLAMA_API_BASE=http://localhost:11434
-            
-            For Streamlit Cloud deployment:
-            1. Set OLLAMA_API_BASE to your public Ollama endpoint
-            2. Make sure the endpoint is accessible from Streamlit Cloud
-            """)
-            return None
-
-        # Initialize Ollama
         llm = Ollama(
-            base_url=ollama_base,
+            base_url="http://0.0.0.0:11434",
             model="llama2"
         )
-        
-        # Test the connection
-        try:
-            llm.invoke("test")
-        except Exception as e:
-            st.error(f"""
-            Error connecting to Ollama at {ollama_base}:
-            {str(e)}
-            
-            Please check:
-            1. The Ollama server is running
-            2. The URL is correct
-            3. The server is accessible from this environment
-            """)
-            return None
-            
         return llm
     except Exception as e:
         st.error(f"Error initializing LLM: {str(e)}")
