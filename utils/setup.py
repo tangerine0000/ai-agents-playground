@@ -32,15 +32,26 @@ def initialize_llm():
 def initialize_embeddings():
     """Initialize the embeddings model."""
     try:
+        # Set device to CPU explicitly
+        device = "cpu"
+        
+        # Initialize embeddings with specific model parameters
         embeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
+            model_name="sentence-transformers/all-MiniLM-L6-v2",
+            model_kwargs={'device': device},
+            encode_kwargs={'normalize_embeddings': True}
         )
+        
+        # Force model to CPU
+        if hasattr(embeddings, 'client'):
+            embeddings.client.to(device)
+            
         return embeddings
     except Exception as e:
         st.error(f"Error initializing embeddings: {str(e)}")
         return None
 
-def setup_page(title, description=None):
+def setup_page(title="AI Web Scraper", description=None):
     """Setup the Streamlit page configuration.
     
     Args:
