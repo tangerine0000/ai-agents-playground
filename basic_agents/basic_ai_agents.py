@@ -8,28 +8,9 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import initialize_llm, setup_page
 
-def setup_page(title="AI Web Scraper", description=None):
-    """Setup the Streamlit page configuration.
-    
-    Args:
-        title (str): The title of the page
-        description (str, optional): A description to display below the title
-    """
-    st.set_page_config(
-        page_title=title,
-        page_icon="🤖",
-        layout="wide"
-    )
-    st.title(title)
-    if description:
-        st.write(description) 
-        
 # Initialize components
 llm = initialize_llm()
-setup_page(
-    title="AI Chatbot with Memory",
-    description="Ask me anything! I'll remember our conversation."
-)
+setup_page(title="AI Chatbot with Memory", description="Ask me anything! I'll remember our conversation.")
 
 # Initialize chat history
 if "chat_history" not in st.session_state:
