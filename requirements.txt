@@ -2,8 +2,11 @@ streamlit==1.32.0
 requests==2.31.0
 beautifulsoup4==4.12.3
 faiss-cpu==1.7.4
-langchain==0.0.350
-langchain-ollama==0.0.1
+langchain==0.1.12
+langchain-core==0.1.28
+langchain-community==0.0.28
+langchain-text-splitters==0.0.2
+langchain-ollama==0.0.3
 sentence-transformers==2.2.2
 torch==2.0.1
 numpy==1.24.3
