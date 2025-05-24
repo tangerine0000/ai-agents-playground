@@ -6,7 +6,7 @@ import os
 
 # Add the parent directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils import initialize_llm, setup_page
+from utils.setup import initialize_llm, setup_page
 
 # Initialize components
 llm = initialize_llm()

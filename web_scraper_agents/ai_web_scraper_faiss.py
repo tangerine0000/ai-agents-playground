@@ -6,17 +6,19 @@ import numpy as np
 import sys
 import os
 from langchain.text_splitter import CharacterTextSplitter
+from langchain_community.vectorstores import FAISS
+from langchain_core.prompts import PromptTemplate
 
 # Add the parent directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils import initialize_llm, initialize_embeddings, setup_page
+from utils.setup import initialize_llm, initialize_embeddings, setup_page
 
 # Initialize components
 llm = initialize_llm()
 embeddings = initialize_embeddings()
 setup_page(
-    title="AI-Powered Web Scraper with FAISS Storage",
-    description="Enter a website URL below and store its knowledge for AI-based Q&A!"
+    title="AI Web Scraper with FAISS",
+    description="Enter a website URL and ask questions about its content!"
 )
 
 # Initialize FAISS Vector Database
