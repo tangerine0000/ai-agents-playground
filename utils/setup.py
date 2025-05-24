@@ -40,11 +40,18 @@ def initialize_embeddings():
         st.error(f"Error initializing embeddings: {str(e)}")
         return None
 
-def setup_page():
-    """Setup the Streamlit page configuration."""
+def setup_page(title="AI Web Scraper", description=None):
+    """Setup the Streamlit page configuration.
+    
+    Args:
+        title (str): The title of the page
+        description (str, optional): A description to display below the title
+    """
     st.set_page_config(
-        page_title="AI Web Scraper",
+        page_title=title,
         page_icon="🤖",
         layout="wide"
     )
-    st.title("AI Web Scraper") 
+    st.title(title)
+    if description:
+        st.write(description) 
