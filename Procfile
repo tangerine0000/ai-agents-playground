@@ -1,0 +1,1 @@
+web: streamlit run web_scraper_atents/ai_web_scraper_faiss.py --server.port $PORT --server.enableCORS false --server.enableXsrfProtection false
