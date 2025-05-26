@@ -8,9 +8,11 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import initialize_llm, setup_page
 
+# Setup page configuration first
+setup_page(title="AI Chatbot with Memory", description="Ask me anything! I'll remember our conversation.")
+
 # Initialize components
 llm = initialize_llm()
-setup_page(title="AI Chatbot with Memory", description="Ask me anything! I'll remember our conversation.")
 
 # Initialize chat history
 if "chat_history" not in st.session_state:

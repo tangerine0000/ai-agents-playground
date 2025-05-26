@@ -8,12 +8,14 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.setup import initialize_llm, setup_page
 
-# Initialize components
-llm = initialize_llm()
+# Setup page configuration first
 setup_page(
     title="AI-Powered Web Scraper",
     description="Enter a website URL below and get a summarized version!"
 )
+
+# Initialize components
+llm = initialize_llm()
 
 def scrape_website(url: str) -> str:
     """

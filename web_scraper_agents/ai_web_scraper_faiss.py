@@ -13,13 +13,15 @@ from langchain_core.prompts import PromptTemplate
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.setup import initialize_llm, initialize_embeddings, setup_page
 
-# Initialize components
-llm = initialize_llm()
-embeddings = initialize_embeddings()
+# Setup page configuration first
 setup_page(
     title="AI Web Scraper with FAISS",
     description="Enter a website URL and ask questions about its content!"
 )
+
+# Initialize components
+llm = initialize_llm()
+embeddings = initialize_embeddings()
 
 # Initialize FAISS Vector Database
 index = faiss.IndexFlatL2(384)  # Vector dimension for MiniLM
