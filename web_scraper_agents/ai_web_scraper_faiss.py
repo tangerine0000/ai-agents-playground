@@ -14,11 +14,17 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.setup import initialize_llm, initialize_embeddings, setup_page
 
 # Setup page configuration first
-setup_page(
-    title="AI Web Scraper with FAISS",
-    description="Enter a website URL and ask questions about its content!"
+title="",
+description="Enter a website URL and ask questions about its content!"
+st.set_page_config(
+    page_title=title,
+    page_icon="🤖",
+    layout="wide"
 )
-
+st.title(title)
+if description:
+    st.write(description) 
+    
 # Initialize components
 llm = initialize_llm()
 embeddings = initialize_embeddings()
