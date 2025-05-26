@@ -22,7 +22,7 @@ def initialize_llm():
     try:
         llm = Ollama(
             base_url="http://0.0.0.0:11434",
-            model="llama2"
+            model="gemma3:1b"
         )
         return llm
     except Exception as e:
