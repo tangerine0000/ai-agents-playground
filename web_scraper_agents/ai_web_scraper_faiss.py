@@ -25,7 +25,7 @@ def parse_args():
 args = parse_args()
 
 # Setup page configuration first
-title="AI Web Scraper with FAISS"
+title="Question on Document - AI's Answering"
 description="Enter a website URL and ask questions about its content!"
 st.set_page_config(
     page_title=title,
