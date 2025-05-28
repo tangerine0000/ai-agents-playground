@@ -3,16 +3,27 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.prompts import PromptTemplate
 import sys
 import os
+import argparse
 
 # Add the parent directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import initialize_llm, setup_page
 
+def parse_args():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description='Run the AI Chatbot with Memory')
+    parser.add_argument('-m', '--model', default='gemma3:1b',
+                      help='Ollama model to use (default: gemma3:1b)')
+    return parser.parse_args()
+
+# Parse command line arguments
+args = parse_args()
+
 # Setup page configuration first
 setup_page(title="AI Chatbot with Memory", description="Ask me anything! I'll remember our conversation.")
 
 # Initialize components
-llm = initialize_llm()
+llm = initialize_llm(model_name=args.model)
 
 # Initialize chat history
 if "chat_history" not in st.session_state:

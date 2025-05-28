@@ -17,12 +17,16 @@ os.environ['CUDA_VISIBLE_DEVICES'] = ''
 import warnings
 warnings.filterwarnings('ignore')
 
-def initialize_llm():
-    """Initialize the LLM with Ollama."""
+def initialize_llm(model_name="gemma3:1b"):
+    """Initialize the LLM with Ollama.
+    
+    Args:
+        model_name (str): The name of the Ollama model to use. Defaults to "gemma3:1b".
+    """
     try:
         llm = Ollama(
             base_url="http://0.0.0.0:11434",
-            model="gemma3:1b"
+            model=model_name
         )
         return llm
     except Exception as e:

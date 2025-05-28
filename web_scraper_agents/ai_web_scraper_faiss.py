@@ -5,6 +5,7 @@ import faiss
 import numpy as np
 import sys
 import os
+import argparse
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
@@ -12,6 +13,16 @@ from langchain_core.prompts import PromptTemplate
 # Add the parent directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.setup import initialize_llm, initialize_embeddings, setup_page
+
+def parse_args():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description='Run the AI Web Scraper with FAISS')
+    parser.add_argument('-m', '--model', default='gemma3:1b',
+                      help='Ollama model to use (default: gemma3:1b)')
+    return parser.parse_args()
+
+# Parse command line arguments
+args = parse_args()
 
 # Setup page configuration first
 title="AI Web Scraper with FAISS"
@@ -24,8 +35,9 @@ st.set_page_config(
 st.title(title)
 if description:
     st.write(description) 
+
 # Initialize components
-llm = initialize_llm()
+llm = initialize_llm(model_name=args.model)
 embeddings = initialize_embeddings()
 
 # Initialize FAISS Vector Database

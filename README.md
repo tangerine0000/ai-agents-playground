@@ -49,6 +49,25 @@ An advanced web scraper that stores content in a FAISS vector database for seman
 - BeautifulSoup4
 - Other dependencies listed in `requirements.txt`
 
+### Ollama Setup (Linux)
+
+1. Install Ollama:
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+2. Install a model (example using Gemma):
+```bash
+ollama pull gemma:1b
+```
+
+3. Start Ollama server:
+```bash
+ollama serve
+```
+
+Keep the Ollama server running in a separate terminal while using the applications.
+
 ## Local Development
 
 1. Clone the repository:
@@ -67,20 +86,29 @@ pip install -r requirements.txt
 # Grant execute permission to scripts
 chmod +x scripts/*.sh
 
-# Run applications using scripts
+# Run applications using scripts (with default model gemma3:1b)
 ./scripts/run_chat_agents.sh
 # or
 ./scripts/run_web_scraper_basic.sh
 # or
 ./scripts/run_web_scraper_faiss.sh
 
+# Run with a custom model
+./scripts/run_chat_agents.sh -m <your_model_name>
+# or
+./scripts/run_web_scraper_basic.sh -m <your_model_name>
+# or
+./scripts/run_web_scraper_faiss.sh -m <your_model_name>
+
 # Alternatively, you can run directly with streamlit
-streamlit run basic_agents/basic_ai_agents.py
+streamlit run basic_agents/chat_agents.py -- -m <your_model_name>
 # or
-streamlit run web_scraper_agents/ai_web_scraper.py
+streamlit run web_scraper_agents/ai_web_scraper.py -- -m <your_model_name>
 # or
-streamlit run web_scraper_agents/ai_web_scraper_faiss.py
+streamlit run web_scraper_agents/ai_web_scraper_faiss.py -- -m <your_model_name>
 ```
+
+Note: All applications use "gemma3:1b" as the default model. You can specify a different model using the `-m` or `--model` option. Make sure the model is installed in Ollama before using it.
 
 ## Deployment
 
@@ -91,4 +119,4 @@ The applications are deployed on Streamlit Cloud:
 
 ## License
 
-MIT License 
+MIT License

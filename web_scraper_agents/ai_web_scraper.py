@@ -3,10 +3,21 @@ from bs4 import BeautifulSoup
 import streamlit as st
 import sys
 import os
+import argparse
 
 # Add the parent directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.setup import initialize_llm, setup_page
+
+def parse_args():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description='Run the AI Web Scraper')
+    parser.add_argument('-m', '--model', default='gemma3:1b',
+                      help='Ollama model to use (default: gemma3:1b)')
+    return parser.parse_args()
+
+# Parse command line arguments
+args = parse_args()
 
 # Setup page configuration first
 setup_page(
@@ -15,7 +26,7 @@ setup_page(
 )
 
 # Initialize components
-llm = initialize_llm()
+llm = initialize_llm(model_name=args.model)
 
 def scrape_website(url: str) -> str:
     """
