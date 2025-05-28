@@ -6,17 +6,30 @@ A collection of AI-powered applications built with Streamlit, LangChain, and Oll
 
 ### 1. AI Chatbot with Memory
 A conversational AI chatbot that remembers the conversation history.
-- **Local Run**: `streamlit run basic_agents/basic_ai_agents.py`
+- **File**: `basic_agents/basic_ai_agents.py`
+- **Agents**: 
+  - Conversation Agent: Handles chat interactions with memory
+  - Memory Agent: Manages conversation history
+  - Response Agent: Generates contextual responses
 - **Deployment**: [AI Chatbot with Memory](https://tan-chatbot-agents.streamlit.app/)
 
 ### 2. AI-Powered Web Scraper
 A web scraper that can extract and summarize content from any website.
-- **Local Run**: `streamlit run web_scraper_agents/ai_web_scraper.py`
+- **File**: `web_scraper_agents/ai_web_scraper.py`
+- **Agents**:
+  - Scraping Agent: Extracts content from websites
+  - Summarization Agent: Generates concise summaries
+  - Content Analysis Agent: Analyzes and processes web content
 - **Deployment**: [AI Web Scraper](https://tan-summarizer-web-agents.streamlit.app/)
 
 ### 3. AI Web Scraper with FAISS
 An advanced web scraper that stores content in a FAISS vector database for semantic search and Q&A.
-- **Local Run**: `streamlit run web_scraper_agents/ai_web_scraper_faiss.py`
+- **File**: `web_scraper_agents/ai_web_scraper_faiss.py`
+- **Agents**:
+  - Scraping Agent: Extracts content from websites
+  - Vector Storage Agent: Manages FAISS vector database
+  - Semantic Search Agent: Performs similarity searches
+  - Q&A Agent: Answers questions based on stored content
 - **Deployment**: [AI Web Scraper with FAISS](https://tan-chatbot-web-scraper-agents.streamlit.app/)
 
 ## Features
@@ -28,7 +41,7 @@ An advanced web scraper that stores content in a FAISS vector database for seman
 
 ## Requirements
 
-- Python 3.10+
+- Python 3.10
 - Streamlit
 - LangChain
 - Ollama
@@ -51,20 +64,22 @@ pip install -r requirements.txt
 
 3. Run any of the applications:
 ```bash
+# Grant execute permission to scripts
+chmod +x scripts/*.sh
+
+# Run applications using scripts
+./scripts/run_chat_agents.sh
+# or
+./scripts/run_web_scraper_basic.sh
+# or
+./scripts/run_web_scraper_faiss.sh
+
+# Alternatively, you can run directly with streamlit
 streamlit run basic_agents/basic_ai_agents.py
 # or
 streamlit run web_scraper_agents/ai_web_scraper.py
 # or
 streamlit run web_scraper_agents/ai_web_scraper_faiss.py
-```
-
-## Environment Variables
-
-Set these environment variables for local development:
-```
-OLLAMA_API_BASE = "http://localhost:11434"  # Change this to your Ollama endpoint
-TOKENIZERS_PARALLELISM = "false"
-CUDA_VISIBLE_DEVICES = ""
 ```
 
 ## Deployment
