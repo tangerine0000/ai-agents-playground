@@ -110,6 +110,24 @@ streamlit run web_scraper_agents/ai_web_scraper_faiss.py -- -m <your_model_name>
 
 Note: All applications use "gemma3:1b" as the default model. You can specify a different model using the `-m` or `--model` option. Make sure the model is installed in Ollama before using it.
 
+### Docker Setup
+
+You can also run the applications using Docker:
+
+1. Make sure Docker is installed on your system
+2. Run the Docker script:
+```bash
+# Grant execute permission to the Docker script
+chmod +x scripts/docker.sh
+
+# Build and run the Docker container
+./scripts/docker.sh
+```
+
+The application will be available at http://localhost:8501
+
+Note: When running in Docker, make sure Ollama is running on your host machine and accessible to the container.
+
 ## Deployment
 
 The applications are deployed on Streamlit Cloud:
